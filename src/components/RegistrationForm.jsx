@@ -28,12 +28,6 @@ const registerParticipantSchema = Yup.object().shape({
     .required("Required"),
   email: Yup.string().email("Should be a valid email").required("Required"),
   birthDate: Yup.string().required("Required"),
-  heardFrom: Yup.string()
-    .oneOf(
-      ["social media", "friends", "found myself"],
-      "HeardFrom field should be one of: social media, friends, found myself"
-    )
-    .required("HeardFrom field is required"),
 });
 
 const RegistrationForm = () => {
@@ -74,7 +68,7 @@ const RegistrationForm = () => {
           fullName: "",
           email: "",
           birthDate: "",
-          heardFrom: "friends",
+          heardFrom: "social media",
         }}
         validationSchema={registerParticipantSchema}
         onSubmit={handleSubmit}
