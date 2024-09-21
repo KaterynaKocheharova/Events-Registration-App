@@ -1,5 +1,5 @@
-import { createSelector } from "@reduxjs/toolkit";
-import { selectFilter } from "../filters/selectors";
+// import { createSelector } from "@reduxjs/toolkit";
+// import { selectFilter } from "../filters/selectors";
 
 export const selectEvents = (state) => state.events.items;
 
