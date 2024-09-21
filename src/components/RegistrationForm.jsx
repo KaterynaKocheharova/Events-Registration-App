@@ -138,7 +138,7 @@ const RegistrationForm = () => {
                   <FormControl
                     isInvalid={form.errors.heardFrom && form.touched.heardFrom}
                   >
-                    <FormLabel color="purple.400">Heard From</FormLabel>
+                    <FormLabel color="purple.400">Where did you hear about the event?</FormLabel>
                     <RadioGroup
                       value={field.value}
                       onChange={(value) =>
