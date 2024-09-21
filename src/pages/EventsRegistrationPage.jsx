@@ -6,7 +6,7 @@ import { Center } from "@chakra-ui/react";
 const EventsRegistrationPage = () => {
   return (
     <Section>
-      <PageContainer>
+      <PageContainer> 
         <Center>
           <RegistrationForm />
         </Center>
