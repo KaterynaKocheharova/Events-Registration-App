@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+import {selectEvents} from "../redux/events/selectors";
 
 const EventsList = () => {
   return (
