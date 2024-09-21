@@ -1,7 +1,11 @@
-import css from "./Container.module.css";
+import { Container } from "@chakra-ui/react";
 
-const Container = ({ children }) => {
-  return <div className={css.container}>{children}</div>;
+const PageContainer = ({ children }) => {
+  return (
+    <Container maxW="1400px">
+      {children}
+    </Container>
+  );
 };
 
-export default Container;
+export default PageContainer;
