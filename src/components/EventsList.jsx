@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
+import { fetchEvents } from "../redux/events/operations";
 import { selectEvents, selectTotalPages } from "../redux/events/selectors";
-import { changeCurrentPage } from "../redux/events/slice";
 import { SimpleGrid } from "@chakra-ui/react";
 import EventItem from "./EventItem";
 import ReactPaginate from "react-paginate";
@@ -11,7 +11,7 @@ const EventsList = () => {
   const totalPages = useSelector(selectTotalPages);
 
   const handlePageClick = (event) => {
-    dispatch(changeCurrentPage(event.selected));
+    dispatch(fetchEvents({ page: event.selected + 1, perPage: 10 }));
   };
 
   return (

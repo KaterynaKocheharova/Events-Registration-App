@@ -1,6 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectCurrentPage } from "../redux/events/selectors";
+import { useDispatch } from "react-redux";
 import { fetchEvents } from "../redux/events/operations";
 import Section from "../components/common/Section/Section";
 import PageContainer from "../components/common/Container/Container";
@@ -9,11 +8,9 @@ import EventsList from "../components/EventsList";
 const EventsBoardPage = () => {
   const dispatch = useDispatch();
 
-  const currentPage = useSelector(selectCurrentPage);
-
   useEffect(() => {
-    dispatch(fetchEvents({ page: currentPage, perPage: 10 }));
-  }, [dispatch, currentPage]);
+    dispatch(fetchEvents({ page: 1, perPage: 10 }));
+  }, [dispatch]);
 
   return (
     <Section>

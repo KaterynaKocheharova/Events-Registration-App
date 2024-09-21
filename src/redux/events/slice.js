@@ -3,7 +3,7 @@ import { fetchEvents } from "./operations";
 
 const eventsInitialState = {
   items: [],
-  totalPages: null,
+  totalPages: 1,
   currentPage: 1,
   hasNextPage: true,
   hasPrevPage: false,
