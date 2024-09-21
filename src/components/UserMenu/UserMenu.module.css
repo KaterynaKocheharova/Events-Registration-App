@@ -1,0 +1,38 @@
+.user-menu-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.logout-button {
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.user-menu-container .logout-icon {
+  display: block;
+  width: 2rem;
+  height: 1.5rem;
+}
+
+@media screen and (min-width: 900px) {
+  .user-menu-container .logout-icon {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+.user-menu-text {
+  font-weight: 500;
+}
+
+@media screen and (min-width: 900px) {
+  .user-menu-text {
+    font-size: 20px;
+  }
+}

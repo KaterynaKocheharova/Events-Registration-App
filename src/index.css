@@ -1,0 +1,73 @@
+:root {
+  --main-border-radius: 20px;
+  --first-box-shadow: 2px 3px 3px 0px rgba(255, 153, 102, 0.25);
+
+
+  /* OPTION PALETTE */
+  --first-color: rgb(255, 153, 102); 
+  --second-color:  rgb(255, 255, 255); 
+  --third-color: rgb(221, 221, 221); 
+
+  --input-border-radius: 22px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--second-color);
+  color: rgba(1, 1, 1, 0.8);
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+  font-size: 14px;
+}
+
+@media screen and (min-width: 400px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    border: 1px solid your-desired-border-color !important;
+    -webkit-text-fill-color: your-desired-text-color !important;
+    -webkit-box-shadow: 0 0 0px 1000px your-background-color inset !important;
+    box-shadow: 0 0 0px 1000px your-background-color inset !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+}

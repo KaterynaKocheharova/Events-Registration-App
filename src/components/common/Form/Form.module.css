@@ -1,0 +1,35 @@
+.form {
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 3rem;
+  padding: 2rem;
+  box-shadow: var(--first-box-shadow);
+  border-radius: 62px;
+  border: 1px solid var(--third-color);
+  background-color: var(--second-color);
+}
+
+@media screen and (min-width: 600px) {
+  .form {
+    max-width: 400px;
+  }
+}
+
+.center-form {
+  margin: auto;
+}
+
+@media screen and (min-width: 400px) {
+  .form {
+    padding: 3rem;
+  }
+}
+
+
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}

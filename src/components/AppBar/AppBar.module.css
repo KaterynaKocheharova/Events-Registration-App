@@ -1,0 +1,22 @@
+.header {
+  padding-top: 1.5rem;
+}
+
+.app-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 27px;
+  background-color: var(--first-color);
+  box-shadow: var(--first-box-shadow);
+  font-size: 14px;
+}
+
+@media screen and (min-width: 400px) {
+  .app-bar {
+    font-size: 16px;
+  }
+}
