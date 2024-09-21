@@ -1,4 +1,5 @@
-import { useId } from "react";
+import { useId, useState } from "react";
+import { useParams } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import {
   Input,
@@ -9,8 +10,12 @@ import {
   Box,
   Heading,
   Flex,
+  RadioGroup,
+  Radio,
 } from "@chakra-ui/react";
 import * as Yup from "yup";
+import { registerParticipant } from "../non-redux-api/regitsterParticipant";
+import { activateSuccessToast, activateErrorToast } from "../utils/toast";
 
 const registerParticipantSchema = Yup.object().shape({
   fullName: Yup.string()
@@ -34,6 +39,33 @@ const registerParticipantSchema = Yup.object().shape({
 const RegistrationForm = () => {
   const fullNameId = useId();
   const emailId = useId();
+  const dateId = useId();
+  const radioId = useId();
+
+  const { eventId } = useParams();
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = (values, { resetForm }) => {
+    setIsLoading(true);
+    registerParticipant({ ...values, eventId })
+      .then(() => {
+        activateSuccessToast("Successfully registered!");
+        resetForm();
+      })
+      .catch((error) => {
+        if (
+          error.response.data.message === "Already registered for this event!"
+        ) {
+          activateErrorToast(error.response.data.message);
+        } else {
+          activateErrorToast("Registration error. Try again");
+        }
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
 
   return (
     <Box p="1rem" boxShadow="base" width="400px">
@@ -42,12 +74,10 @@ const RegistrationForm = () => {
           fullName: "",
           email: "",
           birthDate: "",
-          heardFrom: "",
+          heardFrom: "friends",
         }}
         validationSchema={registerParticipantSchema}
-        onSubmit={(values) => {
-          console.log(values);
-        }}
+        onSubmit={handleSubmit}
       >
         {({ errors, touched }) => (
           <Form>
@@ -63,20 +93,21 @@ const RegistrationForm = () => {
                       Full Name
                     </FormLabel>
                     <Input
-                      id={fullNameId}
                       {...field}
+                      id={fullNameId}
                       focusBorderColor="purple.400" // Add this line
                     />
                     <FormErrorMessage>{errors.fullName}</FormErrorMessage>
                   </FormControl>
                 )}
               </Field>
-
               {/* ==================================================== EMAIL ============================================ */}
               <Field name="email">
                 {({ field }) => (
                   <FormControl isInvalid={errors.email && touched.email}>
-                    <FormLabel color="purple.400">Email</FormLabel>
+                    <FormLabel htmlFor={emailId} color="purple.400">
+                      Email
+                    </FormLabel>
                     <Input
                       id={emailId}
                       type="email"
@@ -94,8 +125,11 @@ const RegistrationForm = () => {
                   <FormControl
                     isInvalid={errors.birthDate && touched.birthDate}
                   >
-                    <FormLabel>Birth Date</FormLabel>
+                    <FormLabel htmlFor={dateId} color="purple.400">
+                      Birth Date
+                    </FormLabel>
                     <Input
+                      id={dateId}
                       type="date"
                       {...field}
                       focusBorderColor="purple.400"
@@ -106,35 +140,43 @@ const RegistrationForm = () => {
               </Field>
               {/* =================================================== HEARD FROM ========================================== */}
               <Field name="heardFrom">
-                {({ field }) => (
+                {({ field, form }) => (
                   <FormControl
-                    isInvalid={errors.heardFrom && touched.heardFrom}
+                    isInvalid={form.errors.heardFrom && form.touched.heardFrom}
                   >
-                    <FormLabel>Heard From</FormLabel>
-                    <Box>
-                      {["social media", "friends", "found myself"].map(
-                        (option) => (
-                          <FormControl
-                            key={option}
-                            display="inline-block"
-                            mr="1rem"
-                          >
-                            <Field
-                              type="radio"
-                              name="heardFrom"
+                    <FormLabel color="purple.400">Heard From</FormLabel>
+                    <RadioGroup
+                      value={field.value}
+                      onChange={(value) =>
+                        form.setFieldValue(field.name, value)
+                      }
+                    >
+                      <Flex direction="column" gap="1rem">
+                        {["social media", "friends", "found myself"].map(
+                          (option, index) => (
+                            <Radio
+                              colorScheme="purple"
+                              key={index}
+                              id={`${radioId}${index}`}
                               value={option}
-                            />
-                            <FormLabel as="span">{option}</FormLabel>
-                          </FormControl>
-                        )
-                      )}
-                    </Box>
-                    <FormErrorMessage>{errors.heardFrom}</FormErrorMessage>
+                            >
+                              {option}
+                            </Radio>
+                          )
+                        )}
+                      </Flex>
+                    </RadioGroup>
+                    <FormErrorMessage>{form.errors.heardFrom}</FormErrorMessage>
                   </FormControl>
                 )}
               </Field>
-
-              <Button type="submit" colorScheme="purple" mt="1rem">
+              <Button
+                isLoading={isLoading}
+                loadingText="Submiting"
+                type="submit"
+                colorScheme="purple"
+                mt="1rem"
+              >
                 Submit
               </Button>
             </Flex>

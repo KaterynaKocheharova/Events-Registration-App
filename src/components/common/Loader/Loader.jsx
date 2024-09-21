@@ -11,7 +11,7 @@ const Loader = () => {
     isLoading && (
       <div className={css.backdrop}>
         <div className={css["loader-group"]}>
-          <Text fontSize="xl">Loading. Please, wait</Text>
+          <Text fontSize="xl">Loading. Sorry for waiting!</Text>
           <Circles color="purple" />
         </div>
       </div>
