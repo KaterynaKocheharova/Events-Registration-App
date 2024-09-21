@@ -8,9 +8,17 @@ export const handleError = (state, action) => {
 
 const eventsInitialState = {
   items: [],
+  totalPages: null,
+  currentPage: 1,
+  hasNextPage: true,
+  hasPrevPage: false,
   loading: null,
   error: null,
 };
+
+// finish adjusting state
+// go to the pagination
+// handle it
 
 const eventsSlice = createSlice({
   name: "events",
@@ -21,9 +29,14 @@ const eventsSlice = createSlice({
         state.loading = "fetching-events";
       })
       .addCase(fetchEvents.fulfilled, (state, action) => {
+        const { items, totalPages, hasNextPage, hasPrevPage } =
+          action.payload.events;
         state.error = null;
         state.loading = null;
-        state.items = action.payload.events.items;
+        state.items = items;
+        state.hasNextPage = hasNextPage;
+        state.hasPrevPage = hasPrevPage;
+        state.totalPages = totalPages;
       })
       .addCase(fetchEvents.rejected, handleError);
   },
