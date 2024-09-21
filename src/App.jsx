@@ -17,7 +17,7 @@ export default function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<EventsBoardPage />} />
-            <Route path="/register" element={<EventsRegistrationPage />} />
+            <Route path="/register/:eventId" element={<EventsRegistrationPage />} />
             <Route
               path="/participants/:eventId"
               element={

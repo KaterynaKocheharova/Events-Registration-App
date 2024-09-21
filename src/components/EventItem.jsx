@@ -12,10 +12,11 @@ import {
   Divider,
   Spacer,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import { formatDate } from "../utils/date";
 
 const EventItem = ({
-  eventData: { title, organizer, description, eventDate },
+  eventData: { _id, title, organizer, description, eventDate },
 }) => {
   return (
     <Card borderTop="8px" borderColor="purple.400">
@@ -43,7 +44,9 @@ const EventItem = ({
             Watch
           </Button>
           <Spacer />
-          <Button variant="ghost">Register</Button>
+          <Button variant="ghost" as={Link} to={`register/${_id}`}>
+            Register
+          </Button>
         </HStack>
       </CardFooter>
     </Card>

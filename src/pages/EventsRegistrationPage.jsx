@@ -1,15 +1,17 @@
 import Section from "../components/common/Section/Section";
-import Container from "../components/common/Container/Container";
-// import RegistrationForm from "../components/RegistrationForm/RegistrationForm";
-
+import PageContainer from "../components/common/Container/Container";
+import RegistrationForm from "../components/RegistrationForm/RegistrationForm";
+import { Center } from "@chakra-ui/react";
 
 const EventsRegistrationPage = () => {
   return (
-      <Section>
-        <Container>
-          {/* <RegistrationForm /> */}
-        </Container>
-      </Section>
+    <Section>
+      <PageContainer>
+        <Center>
+          <RegistrationForm />
+        </Center>
+      </PageContainer>
+    </Section>
   );
 };
 
