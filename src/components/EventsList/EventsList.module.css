@@ -13,14 +13,14 @@
 
 .pagination-item {
   border-radius: 50%;
-  border: 1px solid rgb(136, 100, 175);
+  border: 1px solid rgb(144, 47, 248);
   overflow: hidden;
   width: 30px;
   height: 30px;
 }
 
 .active-pagination-item {
-  background-color: rgb(136, 100, 175);
+  background-color:  rgb(144, 47, 248);
   color: white;
 }
 
