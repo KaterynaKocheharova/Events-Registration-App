@@ -23,7 +23,7 @@ const eventsSlice = createSlice({
       .addCase(fetchEvents.fulfilled, (state, action) => {
         state.error = null;
         state.loading = null;
-        state.items = action.payload;
+        state.items = action.payload.events.items;
       })
       .addCase(fetchEvents.rejected, handleError);
   },

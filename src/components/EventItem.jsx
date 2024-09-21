@@ -1,10 +1,53 @@
+import { ViewIcon } from "@chakra-ui/icons";
+import {
+  Box,
+  Card,
+  Button,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Heading,
+  HStack,
+  Text,
+  Divider,
+  Spacer,
+} from "@chakra-ui/react";
+import { formatDate } from "../utils/date";
 
-const EventItem = () => {
+const EventItem = ({
+  eventData: { title, organizer, description, eventDate },
+}) => {
   return (
-    <div>
-      EVENT ITEM
-    </div>
-  )
-}
+    <Card borderTop="8px" borderColor="purple.400">
+      <CardHeader>
+        <Box>
+          <Heading as="h3" size="small">
+            {title}
+          </Heading>
+          <HStack>
+            <Text fontSize="12px">{organizer}</Text>
+          </HStack>
+        </Box>
+      </CardHeader>
+
+      <CardBody>
+        <Text mb="1rem">{description}</Text>
+        <Text fontSize="14px" color="purple.600">
+          {formatDate(eventDate)}
+        </Text>
+      </CardBody>
+      <Divider borderColor="gray.200" />
+      <CardFooter>
+        <HStack>
+          <Button variant="ghost" leftIcon={<ViewIcon />}>
+            Watch
+          </Button>
+          <Spacer />
+          <Button variant="ghost">Register</Button>
+        </HStack>
+      </CardFooter>
+    </Card>
+  );
+};
 
 export default EventItem;
