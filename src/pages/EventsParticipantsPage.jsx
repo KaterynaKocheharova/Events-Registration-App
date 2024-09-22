@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Section from "../components/common/Section/Section";
 import PageContainer from "../components/common/Container/Container";
-import PageTitle from "../components/common/PageTitle"
+import PageTitle from "../components/common/PageTitle";
 import ParticipantsList from "../components/ParticipantsList";
 import { Text, Flex, Center } from "@chakra-ui/react";
 import { fetchParticipants } from "../non-redux-api/participants";
 import { Spinner } from "@chakra-ui/react";
+import ErrorText from "../components/common/ErrorText";
 
 const EventsParticipantsPage = () => {
   const [participants, setParticipants] = useState([]);
@@ -57,12 +58,7 @@ const EventsParticipantsPage = () => {
             No participants yet!
           </Text>
         )}
-        {error && (
-          <Text color="purple.700" textAlign="center" fontSize="24px">
-            Woops! Something seems to be wrong. Check out your internet
-            connection or try again later.
-          </Text>
-        )}
+        {error && <ErrorText />}
       </PageContainer>
     </Section>
   );

@@ -21,7 +21,6 @@ const EventsBoardPage = () => {
   const currentPage = useSelector(selectCurrentPage);
 
   useEffect(() => {
-    console.log(currentPage);
     dispatch(fetchEvents({ page: currentPage, perPage: 10 }));
   }, [dispatch, currentPage]);
 
