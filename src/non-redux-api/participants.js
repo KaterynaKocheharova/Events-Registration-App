@@ -12,7 +12,5 @@ export const registerParticipant = async (participantData) => {
   });
 };
 
-export const fetchParticipants = async (eventId) => {
-  const participants = await axios.get(`participants/${eventId}`);
-  return participants;
-};
+export const fetchParticipants = (eventId) =>
+  axios.get(`participants/${eventId}`);
