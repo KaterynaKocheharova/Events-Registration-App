@@ -1,10 +1,8 @@
 import css from "./Section.module.css";
-import clsx from "clsx";
-import { buildSectionClassName } from "./SectionHelpers";
 
-const Section = ({ children, type }) => {
+const Section = ({ children }) => {
   return (
-    <section className={clsx(css.section, buildSectionClassName(type))}>
+    <section className={css.section}>
       {children}
     </section>
   );

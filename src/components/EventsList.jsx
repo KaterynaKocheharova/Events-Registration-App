@@ -1,10 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
-import { fetchEvents } from "../../redux/events/operations";
-import { selectEvents, selectTotalPages } from "../../redux/events/selectors";
-import CustomGrid from "../common/CustomGrid";
+import { fetchEvents } from "../redux/events/operations";
+import { selectEvents, selectTotalPages } from "../redux/events/selectors";
+import CustomGrid from "./common/CustomGrid";
 import { IconButton } from "@chakra-ui/react";
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
-import EventItem from "../EventItem";
+import EventItem from "./EventItem";
 import ReactPaginate from "react-paginate";
 import css from "./EventsList.module.css";
 

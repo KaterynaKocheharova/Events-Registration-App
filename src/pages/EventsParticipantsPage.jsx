@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Section from "../components/common/Section/Section";
 import PageContainer from "../components/common/Container/Container";
-import PageTitle from "../components/common/PageHeading";
+import PageTitle from "../components/common/PageTitle"
 import ParticipantsList from "../components/ParticipantsList";
 import { Text, Flex, Center } from "@chakra-ui/react";
 import { fetchParticipants } from "../non-redux-api/participants";
