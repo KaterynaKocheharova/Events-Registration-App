@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Section from "../components/common/Section/Section";
 import PageContainer from "../components/common/Container/Container";
+import PageTitle from "../components/common/PageHeading";
 import ParticipantsList from "../components/ParticipantsList";
 import { Text, Flex, Center } from "@chakra-ui/react";
 import { fetchParticipants } from "../non-redux-api/participants";
@@ -12,7 +13,7 @@ const EventsParticipantsPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const { eventId } = useParams();
+  const { eventId, title } = useParams();
 
   useEffect(() => {
     const getParticipants = () => {
@@ -35,6 +36,9 @@ const EventsParticipantsPage = () => {
   return (
     <Section>
       <PageContainer>
+        <PageTitle>
+          Participants of <Text color="purple.400">{title}</Text>{" "}
+        </PageTitle>
         {loading && (
           <Center>
             <Flex direction="row" alignItems="center" gap="1rem">
@@ -45,8 +49,9 @@ const EventsParticipantsPage = () => {
             </Flex>
           </Center>
         )}
-        {participants.length > 0 &&
-          !loading && (<ParticipantsList participants={participants} />)}
+        {participants.length > 0 && !loading && (
+          <ParticipantsList participants={participants} />
+        )}
         {!participants.length && !loading && !error && (
           <Text color="purple.600" textAlign="center" fontSize="24px">
             No participants yet!

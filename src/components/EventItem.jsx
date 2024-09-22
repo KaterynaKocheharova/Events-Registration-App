@@ -42,7 +42,7 @@ const EventItem = ({
         <HStack>
           <Button
             as={Link}
-            to={`participants/${_id}`}
+            to={`participants/${_id}/${title}`}
             variant="ghost"
             leftIcon={<ViewIcon />}
           >

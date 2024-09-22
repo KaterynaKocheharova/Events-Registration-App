@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import { fetchEvents } from "../redux/events/operations";
 import Section from "../components/common/Section/Section";
 import PageContainer from "../components/common/Container/Container";
-import { Heading } from "@chakra-ui/react";
 import EventsList from "../components/EventsList/EventsList";
+import PageTitle from "../components/common/PageHeading";
 
 const EventsBoardPage = () => {
   const dispatch = useDispatch();
@@ -16,9 +16,9 @@ const EventsBoardPage = () => {
   return (
     <Section>
       <PageContainer>
-        <Heading as="h2" size="lg" textAlign="center" mb="3rem">
+        <PageTitle>
           Available Events
-        </Heading>
+        </PageTitle>
         <EventsList />
       </PageContainer>
     </Section>
