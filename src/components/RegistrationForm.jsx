@@ -31,10 +31,7 @@ const registerParticipantSchema = Yup.object().shape({
 });
 
 const RegistrationForm = () => {
-  const fullNameId = useId();
-  const emailId = useId();
-  const dateId = useId();
-  const radioId = useId();
+  const fieldId = useId();
 
   const { eventId } = useParams();
 
@@ -83,13 +80,16 @@ const RegistrationForm = () => {
               <Field name="fullName">
                 {({ field }) => (
                   <FormControl isInvalid={errors.fullName && touched.fullName}>
-                    <FormLabel htmlFor={fullNameId} color="purple.400">
+                    <FormLabel
+                      htmlFor={`${fieldId}-fullName`}
+                      color="purple.400"
+                    >
                       Full Name
                     </FormLabel>
                     <Input
                       {...field}
-                      id={fullNameId}
-                      focusBorderColor="purple.400" // Add this line
+                      id={`${fieldId}-fullName`}
+                      focusBorderColor="purple.400"
                     />
                     <FormErrorMessage>{errors.fullName}</FormErrorMessage>
                   </FormControl>
@@ -99,11 +99,11 @@ const RegistrationForm = () => {
               <Field name="email">
                 {({ field }) => (
                   <FormControl isInvalid={errors.email && touched.email}>
-                    <FormLabel htmlFor={emailId} color="purple.400">
+                    <FormLabel htmlFor={`${fieldId}-email`} color="purple.400">
                       Email
                     </FormLabel>
                     <Input
-                      id={emailId}
+                      id={`${fieldId}-email`}
                       type="email"
                       {...field}
                       focusBorderColor="purple.400"
@@ -119,11 +119,11 @@ const RegistrationForm = () => {
                   <FormControl
                     isInvalid={errors.birthDate && touched.birthDate}
                   >
-                    <FormLabel htmlFor={dateId} color="purple.400">
+                    <FormLabel htmlFor={`${fieldId}-date`} color="purple.400">
                       Birth Date
                     </FormLabel>
                     <Input
-                      id={dateId}
+                      id={`${fieldId}-date`}
                       type="date"
                       {...field}
                       focusBorderColor="purple.400"
@@ -138,7 +138,9 @@ const RegistrationForm = () => {
                   <FormControl
                     isInvalid={form.errors.heardFrom && form.touched.heardFrom}
                   >
-                    <FormLabel color="purple.400">Where did you hear about the event?</FormLabel>
+                    <FormLabel color="purple.400">
+                      Where did you hear about the event?
+                    </FormLabel>
                     <RadioGroup
                       value={field.value}
                       onChange={(value) =>
@@ -151,7 +153,7 @@ const RegistrationForm = () => {
                             <Radio
                               colorScheme="purple"
                               key={index}
-                              id={`${radioId}${index}`}
+                              id={`${field}-radio-option`}
                               value={option}
                             >
                               {option}
