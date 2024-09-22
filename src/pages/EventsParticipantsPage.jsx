@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { fetchParticipants } from "../non-redux-api/participants";
 import Section from "../components/common/Section/Section";
 import PageContainer from "../components/common/Container/Container";
 import PageTitle from "../components/common/PageTitle";
 import ParticipantsList from "../components/ParticipantsList";
 import { Text, Flex, Center } from "@chakra-ui/react";
-import { fetchParticipants } from "../non-redux-api/participants";
 import { Spinner } from "@chakra-ui/react";
 import ErrorText from "../components/common/ErrorText";
 
