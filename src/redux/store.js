@@ -13,6 +13,12 @@ import storage from "redux-persist/lib/storage";
 // import { filtersReducer } from "../redux/filters/slice";
 import { eventsReducer } from "../redux/events/slice";
 
+const eventsPersistConfiguration = {
+  key: "events",
+  storage,
+  whitelist: ["currentPage"],
+};
+
 // const authPersistConfiguration = {
 //   key: "auth",
 //   storage,
@@ -22,7 +28,7 @@ import { eventsReducer } from "../redux/events/slice";
 export const store = configureStore({
   reducer: {
     // filters: filtersReducer,
-    events: eventsReducer,
+    events: persistReducer(eventsPersistConfiguration, eventsReducer),
     // auth: persistReducer(authPersistConfiguration, authReducer),
   },
   middleware: (getDefaultMiddleware) =>

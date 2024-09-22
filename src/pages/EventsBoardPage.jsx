@@ -9,10 +9,13 @@ import PageTitle from "../components/common/PageTitle"
 
 const EventsBoardPage = () => {
   const dispatch = useDispatch();
+  
+  const currentPage = useSelector(selectCurrentPage);
 
   useEffect(() => {
-    dispatch(fetchEvents({ page: 1, perPage: 10 }));
-  }, [dispatch]);
+    console.log(currentPage)
+    dispatch(fetchEvents({ page: currentPage, perPage: 10 }));
+  }, [dispatch, currentPage]);
 
   return (
     <Section>

@@ -1,6 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
-import { fetchEvents } from "../redux/events/operations";
-import { selectEvents, selectTotalPages } from "../redux/events/selectors";
+import { changeCurrentPage } from "../redux/events/slice";
+import {
+  selectEvents,
+  selectTotalPages,
+  selectCurrentPage,
+} from "../redux/events/selectors";
 import CustomGrid from "./common/CustomGrid";
 import { IconButton } from "@chakra-ui/react";
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
@@ -12,9 +16,10 @@ const EventsList = () => {
   const dispatch = useDispatch();
   const events = useSelector(selectEvents);
   const totalPages = useSelector(selectTotalPages);
+  const currentPage = useSelector(selectCurrentPage);
 
   const handlePageClick = (event) => {
-    dispatch(fetchEvents({ page: event.selected + 1, perPage: 10 }));
+    dispatch(changeCurrentPage(event.selected + 1));
   };
 
   return (
@@ -45,6 +50,7 @@ const EventsList = () => {
               className={css["next-button"]}
             />
           }
+          forcePage={currentPage - 1}
           breakLabel="..."
           onPageChange={handlePageClick}
           pageRangeDisplayed={5}
