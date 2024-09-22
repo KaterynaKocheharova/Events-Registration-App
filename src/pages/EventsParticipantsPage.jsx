@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Section from "../components/common/Section/Section";
 import PageContainer from "../components/common/Container/Container";
-import { Text } from "@chakra-ui/react";
+import ParticipantsList from "../components/ParticipantsList";
+import { Text, Flex, Center } from "@chakra-ui/react";
 import { fetchParticipants } from "../non-redux-api/participants";
+import { Spinner } from "@chakra-ui/react";
 
 const EventsParticipantsPage = () => {
   const [participants, setParticipants] = useState([]);
@@ -30,25 +32,28 @@ const EventsParticipantsPage = () => {
     getParticipants();
   }, [eventId]);
 
-  useEffect(() => {
-    console.log(participants);
-  }, [participants]);
-
   return (
     <Section>
       <PageContainer>
         {loading && (
-          <Text textAlign="center" fontSize="24px">
-            Loading participants. Please, wait.
-          </Text>
+          <Center>
+            <Flex direction="row" alignItems="center" gap="1rem">
+              <Text color="purple.400" textAlign="center" fontSize="24px">
+                Loading participants. Please, wait.
+              </Text>
+              <Spinner color="purple.400" />
+            </Flex>
+          </Center>
         )}
+        {participants.length > 0 &&
+          !loading && (<ParticipantsList participants={participants} />)}
         {!participants.length && !loading && !error && (
-          <Text textAlign="center" fontSize="24px">
+          <Text color="purple.600" textAlign="center" fontSize="24px">
             No participants yet!
           </Text>
         )}
         {error && (
-          <Text textAlign="center" fontSize="24px">
+          <Text color="purple.700" textAlign="center" fontSize="24px">
             Woops! Something seems to be wrong. Check out your internet
             connection or try again later.
           </Text>
