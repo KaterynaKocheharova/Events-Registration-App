@@ -6,7 +6,12 @@ const AppBar = () => {
   return (
     <PageContainer maxW="md" bg="blue.600" color="white">
       <Flex as="nav" p="20px" alignItems="center" boxShadow="base">
-        <Heading as="h1">Events Registration</Heading>
+        <Heading
+          as="h1"
+          size="lg"
+        >
+          Welcome to Events App!
+        </Heading>
         <Spacer />
         <Button as={Link} to="/" colorScheme="purple">
           HOME
