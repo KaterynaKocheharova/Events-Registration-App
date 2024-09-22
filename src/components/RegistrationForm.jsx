@@ -14,7 +14,7 @@ import {
   Radio,
 } from "@chakra-ui/react";
 import * as Yup from "yup";
-import { registerParticipant } from "../non-redux-api/regitsterParticipant";
+import { registerParticipant } from "../non-redux-api/participants";
 import { activateSuccessToast, activateErrorToast } from "../utils/toast";
 
 const registerParticipantSchema = Yup.object().shape({

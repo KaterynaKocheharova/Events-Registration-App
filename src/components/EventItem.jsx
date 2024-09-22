@@ -40,11 +40,16 @@ const EventItem = ({
       <Divider borderColor="gray.200" />
       <CardFooter>
         <HStack>
-          <Button variant="ghost" leftIcon={<ViewIcon />}>
+          <Button
+            as={Link}
+            to={`participants/${_id}`}
+            variant="ghost"
+            leftIcon={<ViewIcon />}
+          >
             Watch
           </Button>
           <Spacer />
-          <Button variant="ghost" as={Link} to={`register/${_id}`}>
+          <Button as={Link} to={`register/${_id}`} variant="ghost">
             Register
           </Button>
         </HStack>
