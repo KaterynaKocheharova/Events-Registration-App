@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { fetchEvents } from "../../redux/events/operations";
 import { selectEvents, selectTotalPages } from "../../redux/events/selectors";
-import { SimpleGrid, IconButton } from "@chakra-ui/react";
+import CustomGrid from "../common/CustomGrid";
+import { IconButton } from "@chakra-ui/react";
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 import EventItem from "../EventItem";
 import ReactPaginate from "react-paginate";
@@ -18,12 +19,12 @@ const EventsList = () => {
 
   return (
     <>
-      <SimpleGrid spacing="10" minChildWidth="250px" mb="3rem">
+      <CustomGrid>
         {events.length > 0 &&
           events.map((eventData) => (
             <EventItem key={eventData._id} eventData={eventData} />
           ))}
-      </SimpleGrid>
+      </CustomGrid>
       {events.length > 0 && (
         <ReactPaginate
           previousLabel={
