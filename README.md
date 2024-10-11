@@ -1,5 +1,5 @@
 # EVENTS APP #
-A simple practice website for event registration (Note: the events listed are fictional, but the backend interactions and registration process are real.
+A simple practice website for event registration (Note: the events listed are fictional, but the backend interactions and registration process are real in terms of storing registered users as participants of fictional events.
 
 ## KEY FEATURES ##
 * Paginated list of available events
